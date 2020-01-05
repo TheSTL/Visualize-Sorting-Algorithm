@@ -1,42 +1,39 @@
 import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
 import Array from '../../components/array';
 
 let node = [];
 
 function mergeSort (unsortedArray, count ) {
-    let root = document.getElementsByClassName(`root${count}`);
-    if (root.length === 0) {
-        root = document.createElement('div');
-        root.className = `root${count} root-row`;
-        node[count]= [];
-        node[count].push(<Array values={unsortedArray} />);
-
-    } else {
-        root = root[0]
-        node[count].push(<Array values={unsortedArray} />);
-    }   
-    console.log(node);
+    console.log(unsortedArray);
     
-    document.getElementsByClassName(`visRoot`)[0].appendChild(root);
-
-    
-    ReactDOM.render(<React.Fragment>
-        {
-            node[count]
-        }
-        </React.Fragment>,root);
-
     if (unsortedArray.length <= 1) {
-      return unsortedArray;
+      return [ unsortedArray, <Array values={unsortedArray} />];
     }
-    const middle = Math.floor(unsortedArray.length / 2);  
+    const middle = Math.ceil(unsortedArray.length / 2);  
     const left = unsortedArray.slice(0, middle);
     const right = unsortedArray.slice(middle);
 
-    return merge(
-      mergeSort(left, count + 1), mergeSort(right, count + 1)
-    );
+    const leftResult = mergeSort(left, count + 1);
+    const rightResult = mergeSort(right, count + 1);
+    
+    const sortedArray = merge(leftResult[0], rightResult[0]);
+    
+    return [
+      sortedArray, 
+      <div className='child'>
+          <div>
+            <Array values={unsortedArray} />
+          </div>
+          <div style={{display: 'flex'}}>
+            {leftResult[1]}
+            {rightResult[1]}
+          </div>
+          <div>
+            <Array values={sortedArray} />
+          </div>
+      </div>
+
+    ];
   }
 
   function merge (left, right) {
@@ -67,7 +64,9 @@ class MergeSort extends Component {
 
     render() {        
         return( <div className='visRoot'>
-            <button onClick={()=>{ mergeSort(this.state.randomArray, 0) }}>SORT NOW</button>
+            {
+                mergeSort(this.state.randomArray, 0)
+            }
             </div>
         );
     }
