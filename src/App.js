@@ -1,24 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
+import Header from './components/header'
+import MergeSortPage from './pages/merge-sort';
+
+import './App.css'
+
+const algo = ['merge-sort', 'quick-sort'];
+const array= [1,2,3,4,5,6];
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Header algorithms={algo} />
+        <main>
+          <Switch>
+            <Route exact='/merge-sort' component={() => <MergeSortPage array={array}/>} />
+          </Switch>
+        </main>
+      </Router>
     </div>
   );
 }
