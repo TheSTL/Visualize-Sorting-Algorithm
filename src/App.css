@@ -1,3 +1,6 @@
+* {
+  box-sizing: border-box;
+}
 main{
   display: flex;
   justify-content: center;
@@ -21,6 +24,8 @@ main{
   display: flex;
 }
 
-.child {
-  
+.space-around {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 2vh;
 }

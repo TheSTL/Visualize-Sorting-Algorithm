@@ -1,13 +1,15 @@
 import React, {Component} from 'react';
 import Array from '../../components/array';
 
-let node = [];
-
 function mergeSort (unsortedArray, count ) {
     console.log(unsortedArray);
     
     if (unsortedArray.length <= 1) {
-      return [ unsortedArray, <Array values={unsortedArray} />];
+      return [ unsortedArray, 
+        <div className='space-around' >
+          <Array values={unsortedArray} />
+        </div>
+      ];
     }
     const middle = Math.ceil(unsortedArray.length / 2);  
     const left = unsortedArray.slice(0, middle);
@@ -20,15 +22,15 @@ function mergeSort (unsortedArray, count ) {
     
     return [
       sortedArray, 
-      <div className='child'>
-          <div>
+      <div className='child' >
+          <div className='space-around' >
             <Array values={unsortedArray} />
           </div>
-          <div style={{display: 'flex'}}>
+          <div className='space-around' style={{ width: `${40*3*unsortedArray.length}px`}}>
             {leftResult[1]}
             {rightResult[1]}
           </div>
-          <div>
+          <div className='space-around'>
             <Array values={sortedArray} />
           </div>
       </div>

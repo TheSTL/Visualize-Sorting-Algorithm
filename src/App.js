@@ -7,7 +7,7 @@ import MergeSortPage from './pages/merge-sort';
 import './App.css'
 
 const algo = ['merge-sort', 'quick-sort'];
-const array= [38, 27, 43, 3, 9, 82, 10];
+const array= [1, 2, 3, 4, 5, 6,7,8,9,1];
 
 function App() {
   return (
