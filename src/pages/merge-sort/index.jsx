@@ -5,6 +5,7 @@ let count = 0;
 
 function mergeSort (unsortedArray) { 
   const tempCount = count++; 
+  
     if (unsortedArray.length <= 1) {
       return [ unsortedArray, 
         <div className='space-around' >
@@ -12,20 +13,26 @@ function mergeSort (unsortedArray) {
         </div>
       ];
     }
+
     const middle = Math.ceil(unsortedArray.length / 2);  
     const left = unsortedArray.slice(0, middle);
     const right = unsortedArray.slice(middle);
 
     const leftResult = mergeSort(left);
     const rightResult = mergeSort(right);
-    
+
     const sortedArray = merge(leftResult[0], rightResult[0]);
     
     return [
       sortedArray, 
       <div className='child' >
           <div className='space-around' >
-            <Array values={unsortedArray} count={tempCount} />
+            <Array 
+              values={unsortedArray} 
+              newValues={sortedArray}
+              count={tempCount} 
+              newCount={count}
+            />
           </div>
           <div className='space-around' style={{ width: `${40*3*unsortedArray.length}px`}}>
             {leftResult[1]}

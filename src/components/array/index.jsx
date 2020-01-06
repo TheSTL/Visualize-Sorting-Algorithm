@@ -3,20 +3,22 @@ import PropTypes from 'prop-types';
 
 import ArrayElement from '../array-element';
 
-export default class Array extends React.PureComponent {
+export default class Array extends React.Component {
     constructor(props) {
         super(props);
         this.state= {
             values: this.props.values,
+            newValues: this.props.newValues,
             count: this.props.count,
+            newCount: this.props.newCount,
         }
         this.divArray = React.createRef();
     }
 
     componentDidMount() {
-        console.log(this.divArray);
-        if (this.divArray.current.style.opacity != '1') {
-                    setTimeout(this.displayArray, this.state.count* 1000);
+        const { count, newCount, newValues } = this.state;
+        if (this.divArray && this.divArray.current && this.divArray.current.style.opacity != '1') {
+                    setTimeout(this.displayArray, count* 200);
         }
     }
 
@@ -25,15 +27,19 @@ export default class Array extends React.PureComponent {
     }
     
     render() {    
-        const { values, count } = this.state;
-
+        const { values, count, newCount, newValues } = this.state;
+        console.log(newValues);
+        
         return(
-        <div className= 'array' ref={this.divArray}>
+        <div className= 'array' ref={this.divArray} >
             {
-                values.map((element) => (
-                    <ArrayElement value={element} />
+               values.map((element, i) =>     (      
+                <ArrayElement 
+                  newCount={newCount}
+                  value={element} 
+                  newValue={newValues? newValues[i] : null} />
                 ))
-            } {count}
+            }{count} {newCount}
         </div>  
         );
     };
