@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
 import Array from '../../components/array';
 
-function mergeSort (unsortedArray, count ) {
-    console.log(unsortedArray);
-    
+let count = 0;
+
+function mergeSort (unsortedArray) { 
+  const tempCount = count++; 
     if (unsortedArray.length <= 1) {
       return [ unsortedArray, 
         <div className='space-around' >
-          <Array values={unsortedArray} />
+          <Array values={unsortedArray} count={tempCount} />
         </div>
       ];
     }
@@ -15,8 +16,8 @@ function mergeSort (unsortedArray, count ) {
     const left = unsortedArray.slice(0, middle);
     const right = unsortedArray.slice(middle);
 
-    const leftResult = mergeSort(left, count + 1);
-    const rightResult = mergeSort(right, count + 1);
+    const leftResult = mergeSort(left);
+    const rightResult = mergeSort(right);
     
     const sortedArray = merge(leftResult[0], rightResult[0]);
     
@@ -24,16 +25,13 @@ function mergeSort (unsortedArray, count ) {
       sortedArray, 
       <div className='child' >
           <div className='space-around' >
-            <Array values={unsortedArray} />
+            <Array values={unsortedArray} count={tempCount} />
           </div>
           <div className='space-around' style={{ width: `${40*3*unsortedArray.length}px`}}>
             {leftResult[1]}
             {rightResult[1]}
           </div>
-          <div className='space-around'>
-            <Array values={sortedArray} />
-          </div>
-      </div>
+      </div>  
 
     ];
   }
@@ -67,7 +65,7 @@ class MergeSort extends Component {
     render() {        
         return( <div className='visRoot'>
             {
-                mergeSort(this.state.randomArray, 0)
+                mergeSort(this.state.randomArray)[1]
             }
             </div>
         );

@@ -7,17 +7,21 @@ main{
 }
 .array-element {
   height: 40px;
-  width: 40px;
-  font-size: 36px;
-  padding: 4px;
-  background:powderblue;
-  border: 1px solid black;
-  margin: 4px;
-  text-align: center;
+width: 40px;
+font-size: 36px;
+padding: 4px;
+background:
+powderblue;
+border: 1px solid
+black;
+margin: 4px;
+text-align: center;
+min-width: min-content;
 }
 
 .array {
   display: flex;
+  opacity: 0;
 }
 
 .root-row {
