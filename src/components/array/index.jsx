@@ -14,32 +14,23 @@ export default class Array extends React.Component {
         }
         this.divArray = React.createRef();
     }
-
-    componentDidMount() {
-        const { count, newCount, newValues } = this.state;
-        if (this.divArray && this.divArray.current && this.divArray.current.style.opacity != '1') {
-                    setTimeout(this.displayArray, count* 200);
-        }
-    }
-
-    displayArray = () => {
-        this.divArray.current.style.opacity= 1;
-    }
     
     render() {    
         const { values, count, newCount, newValues } = this.state;
-        console.log(newValues);
         
         return(
         <div className= 'array' ref={this.divArray} >
             {
                values.map((element, i) =>     (      
                 <ArrayElement 
-                  newCount={newCount}
+                  count={count - values.length + i }
+                  newCount={newCount - (values.length - i) }
                   value={element} 
-                  newValue={newValues? newValues[i] : null} />
+                  newValue={newValues? newValues[i] : null} 
+                  index={i}
+                  />
                 ))
-            }{count} {newCount}
+            }
         </div>  
         );
     };

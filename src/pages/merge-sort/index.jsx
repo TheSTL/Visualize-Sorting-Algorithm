@@ -4,13 +4,13 @@ import Array from '../../components/array';
 let count = 0;
 
 function mergeSort (unsortedArray) { 
-  const tempCount = count++; 
+  const tempCount = count+= unsortedArray.length;
   
     if (unsortedArray.length <= 1) {
       return [ unsortedArray, 
         <div className='space-around' >
           <Array values={unsortedArray} count={tempCount} />
-        </div>
+        </div>,
       ];
     }
 
@@ -22,7 +22,7 @@ function mergeSort (unsortedArray) {
     const rightResult = mergeSort(right);
 
     const sortedArray = merge(leftResult[0], rightResult[0]);
-    
+  
     return [
       sortedArray, 
       <div className='child' >
@@ -55,6 +55,7 @@ function mergeSort (unsortedArray) {
         rightIndex++; 
       }
     }
+    count+= left.length + right.length;
 
     return resultArray
             .concat(left.slice(leftIndex))

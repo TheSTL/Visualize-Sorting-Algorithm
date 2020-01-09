@@ -4,24 +4,35 @@
 main{
   display: flex;
   justify-content: center;
+  background-color: black;
 }
 .array-element {
-  height: 40px;
-width: 40px;
-font-size: 36px;
-padding: 4px;
-background:
-powderblue;
-border: 1px solid
-black;
-margin: 4px;
-text-align: center;
-min-width: min-content;
+  height: 22px;
+
+  width: 22px;
+  
+  font-size: 18px;
+  
+  padding: 4px;
+  
+  background:
+  white;
+  
+  border: 4px solid rgba(255, 2, 2, 0.8);
+  
+  margin: -20px;
+  
+  text-align: center;
+  
+  min-width: min-content;
+  
+  opacity: 0;
+  
+  box-sizing: content-box;
 }
 
 .array {
   display: flex;
-  opacity: 0;
 }
 
 .root-row {

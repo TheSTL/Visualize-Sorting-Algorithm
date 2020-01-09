@@ -7,7 +7,9 @@ import MergeSortPage from './pages/merge-sort';
 import './App.css'
 
 const algo = ['merge-sort', 'quick-sort'];
-const array= [38, 27, 43, 3, 9, 82, 10];
+const array= [38, 27, 43, 3, 9, 82, 10, 11, 20, 30, 40, 12, 44, 12, 13];
+window.SPEED= 200;
+window.COUNT= 0;
 
 function App() {
   return (
@@ -16,7 +18,7 @@ function App() {
         <Header algorithms={algo} />
         <main>
           <Switch>
-            <Route exact='/merge-sort' component={() => <MergeSortPage array={array}/>} />
+            <Route exact path='/merge-sort' component={() => <MergeSortPage array={array}/>} />
           </Switch>
         </main>
       </Router>
