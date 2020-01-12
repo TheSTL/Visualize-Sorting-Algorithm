@@ -26,6 +26,7 @@ class App extends React.Component{
       array,
       key: this.state.key + 1,
     })    
+    window.show= true;
   }
 
   startAgain = () => {

@@ -75,6 +75,10 @@ class MergeSort extends React.PureComponent {
             key: props.key
         }
     }
+
+    componentWillUnmount() {
+      window.show= false;
+    }
         
     render() {
       count=0;  
@@ -83,7 +87,7 @@ class MergeSort extends React.PureComponent {
             <h1>Merge Sort</h1>
             <div key={this.state.key} className='visRoot'>
               {
-                mergeSort(this.state.randomArray)[1]
+                window.show &&  mergeSort(this.state.randomArray)[1]
               }
             </div>
           </React.Fragment>
