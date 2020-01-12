@@ -4,11 +4,15 @@ html {
 *, *:before, *:after {
   box-sizing: inherit;
 }
+#root {
+  width: 100wh;
+  height: 100vh;
+  background-color: black;
+}
 
-main{
+.visRoot{
   display: flex;
   justify-content: center;
-  background-color: black;
 }
 .array-element {
   height: 22px;

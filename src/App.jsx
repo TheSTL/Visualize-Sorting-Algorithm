@@ -41,9 +41,6 @@ class App extends React.Component{
     while (id--) {
       window.clearTimeout(id); 
     }
-    this.setState({
-      key: 0
-    })
   }
 
   render(){
@@ -55,7 +52,6 @@ class App extends React.Component{
             startAgain={this.startAgain} 
             stop={this.stop}
           />
-          <main>
             <Switch>
               <Route 
                 exact 
@@ -70,7 +66,6 @@ class App extends React.Component{
                 } 
               />
             </Switch>
-          </main>
         </Router>
       </div>
     );
