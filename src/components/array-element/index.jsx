@@ -55,8 +55,7 @@ export default class arrayElement extends React.Component {
             <React.Fragment>
           <div 
             className= 'array-element' 
-            ref={this.divElement}
-             
+            ref={this.divElement} 
           > 
             {value} 
           </div>

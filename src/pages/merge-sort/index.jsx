@@ -72,12 +72,17 @@ class MergeSort extends React.PureComponent {
         super(props);
         this.state = {
             randomArray: props.array,
+            key: props.key
         }
     }
 
+    componentDidMount() {
+      window.set=this.forceUpdate.bind(this);
+    }
+    
     render() {      
       count=0;  
-        return( <div className='visRoot'>
+        return( <div key={this.state.key} className='visRoot'>
             {
                 mergeSort(this.state.randomArray)[1]
             }

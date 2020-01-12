@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 class Header extends React.Component{
     
   genrateArray = () => {
-    const arrayLength = Math.floor( Math.random()*(20 - 5 + 1)) + 5;
+    const arrayLength = Math.floor( Math.random()*(25 - 5 + 1)) + 5;
     const maxElementValue = Math.floor( Math.random()*100);
     const newArray = Array.from({length: arrayLength}, () => Math.floor(Math.random() * maxElementValue));
     this.props.changeArray(newArray);
@@ -19,7 +19,7 @@ class Header extends React.Component{
               <Link to='quick-sort'>Quick Sort</Link>
           </nav>
           <button onClick={this.genrateArray} > Generate Array</button>
-          <button >Play Again</button>
+          <button onClick={this.props.startAgain}>Play Again</button>
           <button onClick={this.props.stop}>Stop</button>
         </header>
       );

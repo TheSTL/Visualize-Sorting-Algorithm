@@ -15,20 +15,25 @@ class App extends React.Component{
     this.state={
       array: [],
       playAgain: false,
+      key:0,
     }
   }
 
   changeArray = (array) => {
     this.stop();
     this.setState({
-      array
+      array,
+      key:0
     })
     console.log(array);
-    
+
   }
 
   startAgain = () => {
-
+    this.stop();
+    this.setState({
+      key: this.state.key + 1,
+    })
   }
 
   stop = () => {
@@ -36,6 +41,9 @@ class App extends React.Component{
     while (id--) {
       window.clearTimeout(id); 
     }
+    this.setState({
+      key: 0
+    })
   }
 
   render(){
@@ -43,7 +51,8 @@ class App extends React.Component{
       <div className="App">
         <Router>
           <Header 
-            changeArray={this.changeArray} 
+            changeArray={this.changeArray}
+            startAgain={this.startAgain} 
             stop={this.stop}
           />
           <main>
@@ -55,6 +64,8 @@ class App extends React.Component{
                   <MergeSortPage 
                     array={this.state.array}
                     startAgain={this.startAgain}
+                    setRenderAgain={this.setRenderAgain}
+                    key={this.state.key}
                   />
                 } 
               />
