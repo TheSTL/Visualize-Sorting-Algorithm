@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import InputRange from 'react-input-range';
 
 class Header extends React.Component{
     
@@ -9,6 +10,10 @@ class Header extends React.Component{
     const maxElementValue = Math.floor( Math.random()*100);
     const newArray = Array.from({length: arrayLength}, () => Math.floor(Math.random() * maxElementValue));
     this.props.changeArray(newArray);
+  }
+
+  speedChange = (e) => {
+    window.SPEED = e.target.value;
   }
 
     render() {
@@ -21,6 +26,10 @@ class Header extends React.Component{
             <button className='start' onClick={this.genrateArray} > Start</button>
             <button className='playAgain' onClick={this.props.startAgain}>Play Again</button>
             <button className='stop' onClick={this.props.stop}>Stop</button>
+          </div>
+          <div className='control-speed'>
+            <label>Speed</label>
+            <input type="range" step='150' min="0" value={Window.SPEED} max="1050" onChange={this.speedChange} />
           </div>
         </header>
       );

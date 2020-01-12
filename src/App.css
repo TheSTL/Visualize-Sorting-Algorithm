@@ -46,7 +46,7 @@ border: 1px solid
 white;
 cursor: pointer;
 font-size: large;
-height: 10vh;
+height: 5vh;
 width: 10vw;
 border-radius: 44px;
 }
@@ -122,4 +122,14 @@ ul {
   list-style-type: disc;
   color: white;
   font-size: 25px;
+}
+
+.control-speed {
+ display: flex;
+}
+
+label {
+  color: white;
+  margin-right: 2vh;
+  font-size: large;
 }

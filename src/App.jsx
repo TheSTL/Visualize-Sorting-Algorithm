@@ -8,7 +8,6 @@ import MergeSortPage from './pages/merge-sort';
 import './App.css'
 
 window.SPEED= 200;
-window.timeOutIds= [];
 
 class App extends React.Component{
   constructor(props) {
