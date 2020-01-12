@@ -9,6 +9,7 @@ export default class arrayElement extends React.Component {
             newValue: this.props.newValue,
             count: this.props.count,
             newCount: this.props.newCount,
+            end: this.props.end
         }
         this.divElement = React.createRef();
     }
@@ -22,7 +23,7 @@ export default class arrayElement extends React.Component {
     showElement = () => {
        if (this.divElement.current)
         this.divElement.current.style.opacity = '1';
-       if (!this.state.newValue)
+       if (this.state.end)
         this.changeBorder();
     }
 
@@ -58,7 +59,7 @@ export default class arrayElement extends React.Component {
              
           > 
             {value} 
-          </div>{this.state.count},{this.state.newCount}
+          </div>
           </React.Fragment>
         );
     }

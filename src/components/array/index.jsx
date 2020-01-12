@@ -11,12 +11,13 @@ export default class Array extends React.Component {
             newValues: this.props.newValues,
             count: this.props.count,
             newCount: this.props.newCount,
+            end: this.props.end
         }
         this.divArray = React.createRef();
     }
     
     render() {    
-        const { values, count, newCount, newValues } = this.state;
+        const { values, count, newCount, newValues, end } = this.state;
         
         return(
         <div className= 'array' ref={this.divArray} >
@@ -27,7 +28,7 @@ export default class Array extends React.Component {
                   newCount={newCount - (values.length - i) }
                   value={element} 
                   newValue={newValues? newValues[i] : null} 
-                  index={i}
+                  end={end}
                   />
                 ))
             }

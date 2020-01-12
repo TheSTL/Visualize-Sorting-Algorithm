@@ -9,7 +9,11 @@ function mergeSort (unsortedArray) {
     if (unsortedArray.length <= 1) {
       return [ unsortedArray, 
         <div className='space-around' >
-          <Array values={unsortedArray} count={tempCount} />
+          <Array 
+            values={unsortedArray} 
+            count={tempCount} 
+            end={true}
+          />
         </div>,
       ];
     }
@@ -32,6 +36,7 @@ function mergeSort (unsortedArray) {
               newValues={sortedArray}
               count={tempCount} 
               newCount={count}
+              end={false}
             />
           </div>
           <div className='space-around' style={{ width: `${22*3*unsortedArray.length}px`}}>
