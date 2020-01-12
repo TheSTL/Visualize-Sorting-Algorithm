@@ -20,6 +20,7 @@ class Header extends React.Component{
       return (
         <header className= 'main-header'> 
           <nav>
+              <Link to='/'>Home</Link>
               <Link to='merge-sort'>Merge Sort</Link>
           </nav>
           <div className='control-btns'>

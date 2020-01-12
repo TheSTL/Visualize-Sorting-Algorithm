@@ -28,30 +28,26 @@ h1 {
   margin-bottom: 2vh;
 }
 a {
-  color:
-white;
-font-size: x-large;
-margin: 10px;
-position: relative; 
-z-index:2;
+  color: white;
+  font-size: x-large;
+  margin: 10px;
+  position: relative; 
+  z-index:2;
 }
 
 .control-btns{
   margin-top: 3vh;
-
   margin-bottom: 3vh;
 }
 
 button{
-  background:
-#fff0;
-border: 1px solid
-white;
-cursor: pointer;
-font-size: large;
-height: 5vh;
-width: 10vw;
-border-radius: 44px;
+  background: #fff0;
+  border: 1px solid white;
+  cursor: pointer;
+  font-size: large;
+  height: 5vh;
+  width: 10vw;
+  border-radius: 44px;
 }
 
 .start{
@@ -69,24 +65,15 @@ border-radius: 44px;
 
 .array-element {
   height: 22px;
-
   width: 22px;
-  
   font-size: 18px;
-  
   padding: 2px;
-  
-  background:
-  white;
-  
+  background:   white;
   border: 2px solid rgba(255, 2, 2, 0.8);
-  
   margin: 1px;
-  
   text-align: center;
-    color: black;
+  color: black;
   opacity: 0;
-  
   box-sizing: content-box;
 }
 
@@ -139,16 +126,12 @@ label {
 
 img {
   position: absolute;
-
-width: 90vh;
-
-top: -45px;
-
-border-radius: 31px;
-
-left: 55px;
-opacity: 0.85;
-transition: all 0.3s ease-in;
+  width: 90vh;
+  top: -45px;
+  border-radius: 31px;
+  left: 55px;
+  opacity: 0.85;
+  transition: all 0.3s ease-in;
 }
 
 .note {
