@@ -9,10 +9,8 @@ export default class arrayElement extends React.Component {
             newValue: this.props.newValue,
             count: this.props.count,
             newCount: this.props.newCount,
-            index: this.props.index
         }
         this.divElement = React.createRef();
-        this.count= window.COUNT;
     }
     componentDidMount() {
         if (this.state.newValue){
@@ -22,6 +20,7 @@ export default class arrayElement extends React.Component {
 
     }
     showElement = () => {
+       if (this.divElement.current)
         this.divElement.current.style.opacity = '1';
        if (!this.state.newValue)
         this.changeBorder();
@@ -35,14 +34,18 @@ export default class arrayElement extends React.Component {
     }
 
     changeBorder = () => {
-        this.divElement.current.style.border = '4px solid #343c3ac4';
-        this.divElement.current.style.boxShadow = '0px 0px 5px 5px white';
-        this.divElement.current.style.transform = 'scale(1.3)';
-        setTimeout(() => {
-            this.divElement.current.style.border= '4px solid rgba(34, 255, 2, 0.8)';
-            this.divElement.current.style.boxShadow = 'none';
-            this.divElement.current.style.transform = 'scale(1)';
-        }, window.SPEED);
+        if (this.divElement.current){
+            this.divElement.current.style.border = '2px solid #343c3ac4';
+            this.divElement.current.style.boxShadow = '0px 0px 5px 5px white';
+            this.divElement.current.style.transform = 'scale(1.3)';
+            setTimeout(() => {
+                if (this.divElement.current){
+                    this.divElement.current.style.border= '2px solid rgba(34, 255, 2, 0.8)';
+                    this.divElement.current.style.boxShadow = 'none';
+                    this.divElement.current.style.transform = 'scale(1)';
+                }
+            }, window.SPEED);
+        }
     }
 
     render() {
@@ -51,10 +54,11 @@ export default class arrayElement extends React.Component {
             <React.Fragment>
           <div 
             className= 'array-element' 
-            ref={this.divElement} 
+            ref={this.divElement}
+             
           > 
             {value} 
-          </div>{this.state.count} {this.state.newCount}
+          </div>{this.state.count},{this.state.newCount}
           </React.Fragment>
         );
     }

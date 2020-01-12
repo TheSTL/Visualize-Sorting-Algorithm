@@ -34,7 +34,7 @@ function mergeSort (unsortedArray) {
               newCount={count}
             />
           </div>
-          <div className='space-around' style={{ width: `${40*3*unsortedArray.length}px`}}>
+          <div className='space-around' style={{ width: `${22*3*unsortedArray.length}px`}}>
             {leftResult[1]}
             {rightResult[1]}
           </div>
@@ -62,7 +62,7 @@ function mergeSort (unsortedArray) {
             .concat(right.slice(rightIndex));
   }
 
-class MergeSort extends Component {
+class MergeSort extends React.PureComponent {
     constructor(props) {
         super(props);
         this.state = {
@@ -70,7 +70,8 @@ class MergeSort extends Component {
         }
     }
 
-    render() {        
+    render() {      
+      count=0;  
         return( <div className='visRoot'>
             {
                 mergeSort(this.state.randomArray)[1]
