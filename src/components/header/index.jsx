@@ -18,9 +18,11 @@ class Header extends React.Component{
               <Link to='merge-sort'>Merge Sort</Link>
               <Link to='quick-sort'>Quick Sort</Link>
           </nav>
-          <button onClick={this.genrateArray} > Generate New Array</button>
-          <button onClick={this.props.startAgain}>Play Again</button>
-          <button onClick={this.props.stop}>Stop</button>
+          <div className='control-btns'>
+            <button onClick={this.genrateArray} > Generate</button>
+            <button onClick={this.props.startAgain}>Play Again</button>
+            <button onClick={this.props.stop}>Stop</button>
+          </div>
         </header>
       );
     }

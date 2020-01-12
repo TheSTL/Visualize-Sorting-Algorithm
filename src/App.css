@@ -14,6 +14,37 @@ html {
   display: flex;
   justify-content: center;
 }
+
+.main-header {
+  margin-bottom: 2vh;
+}
+a {
+  color:
+white;
+font-size: x-large;
+margin: 10px;
+}
+
+.control-btns{
+  margin-top: 3vh;
+
+  margin-bottom: 3vh;
+}
+
+button{
+  background:
+#fff0;
+border: 1px solid
+white;
+outline: none;
+cursor: pointer;
+font-size: large;
+height: 10vh;
+width: 10vw;
+border-radius: 44px;
+}
+
+
 .array-element {
   height: 22px;
 

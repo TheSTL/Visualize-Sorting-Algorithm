@@ -14,9 +14,7 @@ export default class arrayElement extends React.Component {
         this.divElement = React.createRef();
     }
     componentDidMount() {
-        if (this.state.newValue){
-            setTimeout(this.changeElement, (this.state.newCount)*window.SPEED);
-        }
+        setTimeout(this.changeElement, (this.state.newCount)*window.SPEED);
         setTimeout(this.showElement, this.state.count* window.SPEED);
 
     }
@@ -29,7 +27,7 @@ export default class arrayElement extends React.Component {
 
     changeElement = () => {
         this.setState({
-            value: this.state.newValue
+            value: this.state.newValue? this.state.newValue: this.state.newValue == '0'? 0: this.state.value
         });
         this.changeBorder();
     }
