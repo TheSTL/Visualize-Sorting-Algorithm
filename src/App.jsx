@@ -34,6 +34,7 @@ class App extends React.Component{
     this.setState({
       key: this.state.key + 1,
     })
+    window.show= true;
   }
 
   stop = () => {

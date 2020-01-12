@@ -25,7 +25,7 @@ class Header extends React.Component{
           </nav>
           <div className='control-btns'>
             <button className='start' onClick={this.genrateArray} > Start</button>
-            <button className='playAgain' onClick={this.props.startAgain}>Play Again</button>
+            <button className='playAgain' onClick={this.props.startAgain}>Again</button>
             <button className='stop' onClick={this.props.stop}>Stop</button>
           </div>
           <div className='control-speed'>
