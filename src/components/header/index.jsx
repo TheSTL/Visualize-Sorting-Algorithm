@@ -16,12 +16,11 @@ class Header extends React.Component{
         <header className= 'main-header'> 
           <nav>
               <Link to='merge-sort'>Merge Sort</Link>
-              <Link to='quick-sort'>Quick Sort</Link>
           </nav>
           <div className='control-btns'>
-            <button onClick={this.genrateArray} > Generate</button>
-            <button onClick={this.props.startAgain}>Play Again</button>
-            <button onClick={this.props.stop}>Stop</button>
+            <button className='start' onClick={this.genrateArray} > Start</button>
+            <button className='playAgain' onClick={this.props.startAgain}>Play Again</button>
+            <button className='stop' onClick={this.props.stop}>Stop</button>
           </div>
         </header>
       );

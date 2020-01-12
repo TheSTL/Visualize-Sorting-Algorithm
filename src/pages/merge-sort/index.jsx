@@ -75,18 +75,18 @@ class MergeSort extends React.PureComponent {
             key: props.key
         }
     }
-
-    componentDidMount() {
-      window.set=this.forceUpdate.bind(this);
-    }
-    
-    render() {      
+        
+    render() {
       count=0;  
-        return( <div key={this.state.key} className='visRoot'>
-            {
+        return(
+          <React.Fragment>
+            <h1>Merge Sort</h1>
+            <div key={this.state.key} className='visRoot'>
+              {
                 mergeSort(this.state.randomArray)[1]
-            }
+              }
             </div>
+          </React.Fragment>
         );
     }
 }

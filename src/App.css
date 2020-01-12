@@ -1,13 +1,21 @@
-html {
-  box-sizing: border-box;
-}
 *, *:before, *:after {
   box-sizing: inherit;
+  outline: none;
+  font-family: "Poppins", sans-serif;
 }
 #root {
   width: 100wh;
   height: 100vh;
   background-color: black;
+}
+
+.App {
+  height: 100%;
+}
+
+h1 {
+  color: white;
+  text-align: center;
 }
 
 .visRoot{
@@ -36,12 +44,23 @@ button{
 #fff0;
 border: 1px solid
 white;
-outline: none;
 cursor: pointer;
 font-size: large;
 height: 10vh;
 width: 10vw;
 border-radius: 44px;
+}
+
+.start{
+  color: green;
+}
+
+.playAgain{
+  color: yellow;
+}
+
+.stop {
+  color: red;
 }
 
 
@@ -80,4 +99,27 @@ border-radius: 44px;
   display: flex;
   justify-content: space-around;
   margin-top: 2vh;
+}
+
+.home {
+  display: flex;
+
+justify-content: center;
+
+flex-direction: column;
+
+align-items: center;
+
+height: 100%;
+}
+
+.heading {
+  margin-top: 0;
+}
+
+ul {
+  text-align: center;
+  list-style-type: disc;
+  color: white;
+  font-size: 25px;
 }

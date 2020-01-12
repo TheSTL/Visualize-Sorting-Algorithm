@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Header from './components/header'
+import HomePage from './pages/home';
 import MergeSortPage from './pages/merge-sort';
 
 import './App.css'
@@ -16,6 +17,7 @@ class App extends React.Component{
       array: [],
       playAgain: false,
       key:0,
+      renderFun: null,
     }
   }
 
@@ -23,10 +25,9 @@ class App extends React.Component{
     this.stop();
     this.setState({
       array,
-      key:0
+      key: this.state.key + 1
     })
-    console.log(array);
-
+    console.log(array);    
   }
 
   startAgain = () => {
@@ -47,25 +48,30 @@ class App extends React.Component{
     return (
       <div className="App">
         <Router>
-          <Header 
+          <Switch>
+                <Route 
+                  exact
+                  path='/'
+                  component={HomePage}
+                />
+          </Switch>
+        <Header 
             changeArray={this.changeArray}
             startAgain={this.startAgain} 
             stop={this.stop}
           />
-            <Switch>
-              <Route 
-                exact 
-                path='/merge-sort' 
-                component={() => 
-                  <MergeSortPage 
-                    array={this.state.array}
-                    startAgain={this.startAgain}
-                    setRenderAgain={this.setRenderAgain}
-                    key={this.state.key}
-                  />
-                } 
+        <Switch>     
+          <Route 
+            exact 
+            path='/merge-sort' 
+            component={() => 
+              <MergeSortPage 
+                array={this.state.array}
+                key={this.state.key}
               />
-            </Switch>
+            } 
+          />
+        </Switch>
         </Router>
       </div>
     );
