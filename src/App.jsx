@@ -1,7 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import Header from './components/header'
+import Header from './components/header';
+import Footer from './components/footer';
 import HomePage from './pages/home';
 import MergeSortPage from './pages/merge-sort';
 
@@ -48,29 +49,32 @@ class App extends React.Component{
       <div className="App">
         <Router>
           <Switch>
-                <Route 
-                  exact
-                  path='/'
-                  component={HomePage}
-                />
-          </Switch>
-        <Header 
-            changeArray={this.changeArray}
-            startAgain={this.startAgain} 
-            stop={this.stop}
-          />
-        <Switch>     
-          <Route 
-            exact 
-            path='/merge-sort' 
-            component={() => 
-              <MergeSortPage 
-                array={this.state.array}
-                key={this.state.key}
+            <Route 
+              exact
+              path='/'
+              component={HomePage}
               />
-            } 
-          />
+            <Route 
+              path='/:algo'
+            >
+              <Header 
+                changeArray={this.changeArray}
+                startAgain={this.startAgain} 
+                stop={this.stop}
+              />
+              <Route 
+                exact 
+                path='/merge-sort' 
+                component={() => 
+                  <MergeSortPage 
+                    array={this.state.array}
+                    key={this.state.key}
+                  />
+                } 
+              />
+            </Route>
         </Switch>
+        <Footer />
         </Router>
       </div>
     );

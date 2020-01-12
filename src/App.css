@@ -2,6 +2,7 @@
   box-sizing: inherit;
   outline: none;
   font-family: "Poppins", sans-serif;
+  color: white;
 }
 #root {
   width: 100wh;
@@ -31,6 +32,8 @@ a {
 white;
 font-size: x-large;
 margin: 10px;
+position: relative; 
+z-index:2;
 }
 
 .control-btns{
@@ -103,18 +106,15 @@ border-radius: 44px;
 
 .home {
   display: flex;
-
-justify-content: center;
-
-flex-direction: column;
-
-align-items: center;
-
-height: 100%;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
 }
 
 .heading {
-  margin-top: 0;
+  margin-top: 20px;
+  position: relative;
+  z-index: 2;
 }
 
 ul {
@@ -124,6 +124,9 @@ ul {
   font-size: 25px;
 }
 
+li {
+  position: relative;
+}
 .control-speed {
  display: flex;
 }
@@ -132,4 +135,36 @@ label {
   color: white;
   margin-right: 2vh;
   font-size: large;
+}
+
+img {
+  position: absolute;
+
+width: 90vh;
+
+top: -45px;
+
+border-radius: 31px;
+
+left: 55px;
+opacity: 0.85;
+transition: all 0.3s ease-in;
+}
+
+.note {
+  margin: 0;
+  position: relative;
+  z-index: 2;
+}
+.important {
+  color: red;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0px;
+}
+
+.footer a {
+  font-size: medium;
 }
