@@ -17,7 +17,6 @@ class App extends React.Component{
       array: [],
       playAgain: false,
       key:0,
-      renderFun: null,
     }
   }
 
@@ -25,9 +24,8 @@ class App extends React.Component{
     this.stop();
     this.setState({
       array,
-      key: this.state.key + 1
-    })
-    console.log(array);    
+      key: this.state.key + 1,
+    })    
   }
 
   startAgain = () => {

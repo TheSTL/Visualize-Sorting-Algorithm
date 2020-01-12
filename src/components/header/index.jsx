@@ -13,7 +13,7 @@ class Header extends React.Component{
   }
 
   speedChange = (e) => {
-    window.SPEED = e.target.value;
+    window.SPEED = e.target.value;    
   }
 
     render() {
@@ -30,7 +30,7 @@ class Header extends React.Component{
           </div>
           <div className='control-speed'>
             <label>Speed</label>
-            <input type="range" step='150' min="0" value={Window.SPEED} max="1050" onChange={this.speedChange} />
+            <input type="range" step='20' min="0" value={Window.SPEED} max="1050" onChange={this.speedChange} />
           </div>
         </header>
       );
