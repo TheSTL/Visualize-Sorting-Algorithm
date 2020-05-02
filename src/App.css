@@ -153,16 +153,6 @@ label {
   font-weight: 700;
 }
 
-img {
-  position: absolute;
-  width: 90vh;
-  top: -45px;
-  border-radius: 31px;
-  left: 55px;
-  opacity: 0.85;
-  transition: all 0.3s ease-in;
-}
-
 .note {
   margin: 0;
   position: relative;

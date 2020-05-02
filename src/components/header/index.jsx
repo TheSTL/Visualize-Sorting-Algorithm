@@ -7,7 +7,7 @@ import { Button,
   Icon, 
   Drawer,
   DrawerBody,
-  DrawerFooter,
+  Image,
   DrawerHeader,
   DrawerOverlay,
   DrawerContent,
@@ -26,7 +26,7 @@ class Header extends React.Component{
     }
   }  
   genrateArray = () => {
-    const arrayLength = Math.floor( Math.random()*(7 - 5 + 1)) + 5;
+    const arrayLength = Math.floor( Math.random()*(20 - 5 + 1)) + 5;
     const maxElementValue = Math.floor( Math.random()*100);
     const newArray = Array.from({length: arrayLength}, () => Math.floor(Math.random() * maxElementValue));
     this.props.start(newArray);
@@ -59,30 +59,35 @@ class Header extends React.Component{
       } = this.props;
       return (
         <header className= 'main-header'> 
-        <Icon 
-          name="settings" 
-          size="32px" 
-          style={{ cursor: 'pointer' }}
-          onClick={this.toggleDrawer}
-        />
-      <Drawer
-        isOpen={openDrawer}
-        placement="left"
-        onClose={this.toggleDrawer}
-      >
-        <DrawerOverlay />
-        <DrawerContent>
-          <DrawerCloseButton style={{ backgroundColor: 'black' }} />
-          <DrawerHeader style={{ color: 'black', marginTop: '42px', textDecoration: 'underline'  }}>Visualize Sorting Algorithm</DrawerHeader>
-          <DrawerBody>
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <Link className="drawer-link" to='/'>Home</Link>
-              <Link className="drawer-link" to='merge-sort'>Merge Sort</Link>
-            </div>
-          </DrawerBody>
-            <Footer />
-        </DrawerContent>
-      </Drawer>
+          <Icon 
+            name="settings" 
+            size="32px" 
+            style={{ cursor: 'pointer' }}
+            onClick={this.toggleDrawer}
+          />
+          <div style={{float: 'right'}}>
+            <a href="https://github.com/TheSTL/Visualize-Sorting-Algorithm">
+              <Image size="32px" src='/github-icon.png' />
+            </a>
+          </div>
+          <Drawer
+            isOpen={openDrawer}
+            placement="left"
+            onClose={this.toggleDrawer}
+          >
+            <DrawerOverlay />
+            <DrawerContent>
+              <DrawerCloseButton style={{ backgroundColor: 'black' }} />
+              <DrawerHeader style={{ color: 'black', marginTop: '42px', textDecoration: 'underline'  }}>Visualize Sorting Algorithm</DrawerHeader>
+              <DrawerBody>
+                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                  <Link className="drawer-link" to='/'>Home</Link>
+                  <Link className="drawer-link" to='merge-sort'>Merge Sort</Link>
+                </div>
+              </DrawerBody>
+                <Footer />
+            </DrawerContent>
+          </Drawer>
           <div className='control-btns'>
             <ButtonGroup spacing={4}>
               <Button variantColor="green" size="md" onClick={this.genrateArray} >
