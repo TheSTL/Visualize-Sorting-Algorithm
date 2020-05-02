@@ -12,10 +12,6 @@ import MergeSortPage from './pages/merge-sort';
 import './App.css'
 
 const store = createStore(Reducer);
-
-window.SPEED= 100;
-
-
 class App extends React.Component{
   constructor(props) {
     super(props);

@@ -19,6 +19,7 @@ class Element extends React.Component {
     }
     componentDidMount() {
         const { count } = this.state;
+        const { speed } = this.props;
         // add the initial state to history
         if (this.divElement.current) {
             const newHistoryItem = React.createElement( 'div', {
@@ -38,8 +39,8 @@ class Element extends React.Component {
         const observer = new MutationObserver(this.observerCallback);
         observer.observe(mainRef, config);
         
-        setTimeout(this.changeElement, (this.state.newCount) * window.SPEED);
-        setTimeout(this.showElement, this.state.count * window.SPEED);
+        setTimeout(this.changeElement, (this.state.newCount) * speed);
+        setTimeout(this.showElement, this.state.count * speed);
     }
 
     observerCallback = (mutationsList) => {
@@ -81,7 +82,7 @@ class Element extends React.Component {
     }
 
     changeBorder = () => {
-        const { setEndTimeStamp } = this.props;
+        const { setEndTimeStamp, speed } = this.props;
         const arrayElementRef = this.divElement.current;
         if (arrayElementRef){
             arrayElementRef.classList.remove('unsorted');
@@ -92,7 +93,7 @@ class Element extends React.Component {
                 }
                 // set the end time stamp for the last sort element change
                 setEndTimeStamp(performance.now());
-            }, window.SPEED);
+            }, speed);
         }
     }
 
@@ -135,7 +136,7 @@ const mapStateToProps = state => {
     return {
       currentTimeStamp: state.currentTimeStamp,
       startTimeStamp: state.startTimeStamp,
-      isLoading: state.isLoading,
+      speed: state.speed,
     }
 }  
 

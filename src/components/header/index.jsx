@@ -33,9 +33,7 @@ class Header extends React.Component{
   }
 
   speedChange = (e) => {
-    const { maxRange } = this.state;
-    window.SPEED = maxRange - e.target.value;  
-    this.props.setSpeed(maxRange - e.target.value);  
+    this.props.setSpeed(e.target.value);  
   }
 
   speedChangeForReplay = (e) => {    
@@ -51,6 +49,7 @@ class Header extends React.Component{
     render() {
       const { maxRange, minRange, openDrawer } = this.state;
       const { 
+        speed,
         replay,
         stop, 
         endTimeStamp, 
@@ -109,9 +108,9 @@ class Header extends React.Component{
           <div className='control-speed'>
             <label>Speed</label>
             <div className="input-range-wrapper"> 
-              <Icon name="minus" />              
-              <input type="range" step='20' min={minRange} value={Window.SPEED} max={maxRange} onChange={this.speedChange} />
-              <Icon name="add" />            
+              <Icon name="add" />              
+              <input type="range" step='20' min={minRange} value={speed} max={maxRange} onChange={this.speedChange} />
+              <Icon name="minus" />            
             </div>
           </div>
         </header>
