@@ -41,11 +41,18 @@ a {
   z-index:2;
 }
 
+.drawer-link {
+  color: black;
+  font-size: 22px;
+  text-decoration: none;
+}
+
 .control-btns{
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 3vh;
+  margin-top: 3vh;
 }
 
 button {

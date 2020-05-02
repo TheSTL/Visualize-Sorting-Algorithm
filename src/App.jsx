@@ -36,7 +36,7 @@ class App extends React.Component{
     })    
   }
 
-  startAgain = () => {
+  start = () => {
     this.stop();
     this.setState({
       key: this.state.key + 1,
@@ -87,7 +87,7 @@ class App extends React.Component{
               <Route path='/:algo'>
                 <Header 
                   changeArray={this.changeArray} 
-                  startAgain={this.startAgain} 
+                  start={this.start} 
                   stop={this.stop}
                 />
                 <Route 

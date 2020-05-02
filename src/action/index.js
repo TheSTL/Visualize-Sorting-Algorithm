@@ -4,6 +4,7 @@ export const ActionTypes = keyMirror({
     SET_START_TIMESTAMP: null,
     SET_END_TIMESTAMP: null,
     CURRENT_TIMESTAMP: null,
+    START: null,
     START_AGAIN: null,
     SET_SPEED: null,
 });
@@ -21,13 +22,17 @@ export const Actions = {
     setCurrentTimeStamp(data) {
         return Actions.commonAction(ActionTypes.CURRENT_TIMESTAMP, data);
     },
-    start(data) {  
-        Actions.stop();      
-        return Actions.commonAction(ActionTypes.START_AGAIN, data);
-    },
     setSpeed(data) {
         return Actions.commonAction(ActionTypes.SET_SPEED, data);
     },
+    start(data) {  
+        Actions.stop();      
+        return Actions.commonAction(ActionTypes.START, data);
+    },
+    replay() {
+        Actions.stop();
+        return Actions.commonAction(ActionTypes.START_AGAIN);
+    }, 
     stop() {
         let id = window.setTimeout(function() {}, 0);
         while (id--) {

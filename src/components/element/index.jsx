@@ -117,7 +117,7 @@ class Element extends React.Component {
         return(
             <React.Fragment>
                 {
-                    past[past.length-1].reactItem
+                    past[past.length - 1] && past[past.length - 1].reactItem
                 }
             </React.Fragment>
         );
@@ -135,6 +135,7 @@ const mapStateToProps = state => {
     return {
       currentTimeStamp: state.currentTimeStamp,
       startTimeStamp: state.startTimeStamp,
+      isLoading: state.isLoading,
     }
 }  
 

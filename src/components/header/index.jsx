@@ -1,8 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Button, ButtonGroup, Icon } from "@chakra-ui/core";
+import { Button, 
+  ButtonGroup, 
+  Icon, 
+  Drawer,
+  DrawerBody,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+} from "@chakra-ui/core";
 import { Actions } from '../../action';
+import Footer from '../footer';
 
 class Header extends React.Component{
   constructor(props) {
@@ -10,6 +22,7 @@ class Header extends React.Component{
     this.state = {
       maxRange: 1050,
       minRange: 0,
+      openDrawer: false,
     }
   }  
   genrateArray = () => {
@@ -29,10 +42,16 @@ class Header extends React.Component{
     this.props.setCurrentTimeStamp(Number(e.target.value));
   }
 
+  toggleDrawer = () => {
+    this.setState((prevState) => ({
+      openDrawer: !prevState.openDrawer
+    }));
+  }
+
     render() {
-      const { maxRange, minRange } = this.state;
+      const { maxRange, minRange, openDrawer } = this.state;
       const { 
-        startAgain, 
+        replay,
         stop, 
         endTimeStamp, 
         startTimeStamp, 
@@ -40,12 +59,36 @@ class Header extends React.Component{
       } = this.props;
       return (
         <header className= 'main-header'> 
+        <Icon 
+          name="settings" 
+          size="32px" 
+          style={{ cursor: 'pointer' }}
+          onClick={this.toggleDrawer}
+        />
+      <Drawer
+        isOpen={openDrawer}
+        placement="left"
+        onClose={this.toggleDrawer}
+      >
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerCloseButton style={{ backgroundColor: 'black' }} />
+          <DrawerHeader style={{ color: 'black', marginTop: '42px', textDecoration: 'underline'  }}>Visualize Sorting Algorithm</DrawerHeader>
+          <DrawerBody>
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <Link className="drawer-link" to='/'>Home</Link>
+              <Link className="drawer-link" to='merge-sort'>Merge Sort</Link>
+            </div>
+          </DrawerBody>
+            <Footer />
+        </DrawerContent>
+      </Drawer>
           <div className='control-btns'>
             <ButtonGroup spacing={4}>
               <Button variantColor="green" size="md" onClick={this.genrateArray} >
                 Start
               </Button>
-              <Button className="replay" variantColor="yellow" size="md" onClick={startAgain} >
+              <Button className="replay" variantColor="yellow" size="md" onClick={replay} >
                 Replay
               </Button><Button variantColor="red" size="md" onClick={stop} >
                 Stop
@@ -87,6 +130,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
    start: (array) => dispatch(Actions.start(array)),
+   replay: () => dispatch(Actions.replay()),
    setSpeed: (speed) => dispatch(Actions.setSpeed(speed)),
    setCurrentTimeStamp: (speed) => dispatch(Actions.setCurrentTimeStamp(speed)),
   }

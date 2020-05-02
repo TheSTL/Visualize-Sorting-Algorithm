@@ -9,15 +9,27 @@ const initialState = {
     startTimeStamp: 0,
     endTimeStamp: 0,
     currentTimeStamp: 0,
+    isLoading: false,
 }
 
 export default function reducer(state= initialState, action) {    
-    switch(action.type) {
-        case ActionTypes.START_AGAIN:
+    switch(action.type) {        
+        case ActionTypes.START:
             return {
                 ...state,
                 key: state.key + 1,
                 array: action.data,
+                startTimeStamp: 0,
+                endTimeStamp: 0,
+                currentTimeStamp: 0,
+            };
+        case ActionTypes.START_AGAIN:
+            return {
+                ...state,
+                key: state.key + 1,
+                startTimeStamp: 0,
+                endTimeStamp: 0,
+                currentTimeStamp: 0,
             };
         case ActionTypes.SET_SPEED:
             return {  
@@ -34,6 +46,7 @@ export default function reducer(state= initialState, action) {
             return {
                 ...state,
                 endTimeStamp: action.data,
+                // isLoading: false,
             };
         case ActionTypes.CURRENT_TIMESTAMP:
             return {
