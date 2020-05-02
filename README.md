@@ -2,7 +2,8 @@
 This project is created to visualize sorting algorithms like merge sort,quick sort, heap sort etc.. in a better way.
 
 
-![ezgif com-video-to-gif(1)](https://user-images.githubusercontent.com/50075905/72225015-7743d980-35a6-11ea-8bb1-508ad281521e.gif)
+![vs](https://user-images.githubusercontent.com/50075905/80891538-45d05480-8ce2-11ea-9825-2d4a967faa85.gif)
+
 
 
 ### Task List
