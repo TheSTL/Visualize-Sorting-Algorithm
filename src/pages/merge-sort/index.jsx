@@ -1,9 +1,12 @@
-import React, {Component} from 'react';
+/* eslint-disable react/no-danger-with-children */
+/* eslint-disable no-undef */
+import React from 'react';
+import { connect } from 'react-redux';
 import Array from '../../components/array';
 
 let count = 0;
 
-function mergeSort (unsortedArray) { 
+function mergeSort(unsortedArray) { 
   const tempCount = count+= unsortedArray.length;
   
     if (unsortedArray.length <= 1) {
@@ -72,27 +75,40 @@ class MergeSort extends React.PureComponent {
         super(props);
         this.state = {
             randomArray: props.array,
-            key: props.key
-        }
+            key: props.key,
+            renderMergeSort: mergeSort(props.array)[1],
+          }
     }
 
-    componentWillUnmount() {
-      window.show= false;
+    componentDidUpdate(props) {      
+      if (props.array !== this.props.array) {  
+        this.setState({
+          renderMergeSort: mergeSort(this.props.array)[1]
+        })
+      }
     }
         
-    render() {
-      count=0;  
+    render() {   
+      const { key } = this.props;   
+      count=0;
         return(
           <React.Fragment>
             <h1>Merge Sort</h1>
-            <div key={this.state.key} className='visRoot'>
-              {
-                window.show &&  mergeSort(this.state.randomArray)[1]
-              }
+            <div className="current" />
+            <div key={key} className='visRoot merge-sort'>
+              { this.state.renderMergeSort }
             </div>
           </React.Fragment>
         );
     }
 }
 
-export default MergeSort;
+const mapStateToProps = state => {  
+  console.log(state);
+  return {
+    array: state.array,
+    key: state.key,
+  }
+}
+
+export default  connect(mapStateToProps, null)(MergeSort);
