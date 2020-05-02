@@ -100,7 +100,7 @@ class Header extends React.Component{
             </ButtonGroup>
             <div style={{float: 'right'}}>
               <div className="control-speed" > 
-                <label>Control History</label>
+                <label>Control Visualization</label>
                 <input type="range" step='1' min={startTimeStamp} value={currentTimeStamp} max={endTimeStamp} onChange={this.speedChangeForReplay} />
               </div>
             </div>
