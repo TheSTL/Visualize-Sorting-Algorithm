@@ -1,9 +1,9 @@
-import React from 'react';  
+import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import ArrayElement from '../element';
 
-import ArrayElement from '../array-element';
-
-export default class Array extends React.Component {
+class Array extends React.Component {
     constructor(props) {
         super(props);
         this.state= {
@@ -18,21 +18,19 @@ export default class Array extends React.Component {
     
     render() {    
         const { values, count, newCount, newValues, end } = this.state;
-        
+
         return(
-        <div className= 'array' ref={this.divArray} >
-            {
-               values.map((element, i) =>     (      
-                <ArrayElement 
-                  count={count - values.length + i }
-                  newCount={newCount - (values.length - i) }
-                  value={element} 
-                  newValue={newValues? newValues[i] : null} 
-                  end={end}
-                  />
-                ))
-            }
-        </div>  
+            <div className='array' ref={this.divArray} >
+                {  values.map((element, i) =>     (      
+                        <ArrayElement 
+                            count={count - values.length + i }
+                            newCount={newCount - (values.length - i) }
+                            value={element} 
+                            newValue={newValues? newValues[i] : null} 
+                            end={end}
+                        />
+                    ))}
+            </div>  
         );
     };
 }
@@ -43,3 +41,11 @@ Array.propTypes = {
         PropTypes.oneOfType(PropTypes.string)
     ])
 }
+
+const mapStateToProps = state => {  
+    return {
+      key: state.key
+    }
+}
+
+export default  connect(mapStateToProps, null)(Array);

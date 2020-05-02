@@ -1,6 +1,9 @@
 import React from 'react';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-
+import { ThemeProvider } from "@chakra-ui/core";
+import Reducer from './reducer';
 import Header from './components/header';
 import Footer from './components/footer';
 import HomePage from './pages/home';
@@ -8,7 +11,10 @@ import MergeSortPage from './pages/merge-sort';
 
 import './App.css'
 
-window.SPEED= 200;
+const store = createStore(Reducer);
+
+window.SPEED= 100;
+
 
 class App extends React.Component{
   constructor(props) {
@@ -17,6 +23,8 @@ class App extends React.Component{
       array: [],
       playAgain: false,
       key:0,
+      show: false,
+      
     }
   }
 
@@ -24,17 +32,16 @@ class App extends React.Component{
     this.stop();
     this.setState({
       array,
-      key: this.state.key + 1,
+      show: true,
     })    
-    window.show= true;
   }
 
   startAgain = () => {
     this.stop();
     this.setState({
       key: this.state.key + 1,
+      show: true
     })
-    window.show= true;
   }
 
   stop = () => {
@@ -44,39 +51,64 @@ class App extends React.Component{
     }
   }
 
+  setShowFalse = () => {
+    this.setState({
+      show: false,
+    });
+  }
+
+  setCurrentTimeStamp = (currentTimeStamp) => {
+    this.setState({
+      currentTimeStamp,
+    });
+  }
+
+  setStartTimeStamp = (startTimeStamp) => {
+    this.setState({
+      startTimeStamp,
+    });
+  }
+
+  setEndTimeStamp = (endTimeStamp) => {
+    this.setState({
+      endTimeStamp,
+    });
+  }
+
+
   render(){
     return (
+      <Provider store={store}>
       <div className="App">
-        <Router>
-          <Switch>
-            <Route 
-              exact
-              path='/'
-              component={HomePage}
-              />
-            <Route 
-              path='/:algo'
-            >
-              <Header 
-                changeArray={this.changeArray}
-                startAgain={this.startAgain} 
-                stop={this.stop}
-              />
-              <Route 
-                exact 
-                path='/merge-sort' 
-                component={() => 
-                  <MergeSortPage 
-                    array={this.state.array}
-                    key={this.state.key}
-                  />
-                } 
-              />
-            </Route>
-        </Switch>
-        <Footer />
-        </Router>
+        <ThemeProvider>
+          <Router>
+            <Switch>
+              <Route exact path='/' component={HomePage}/>
+              <Route path='/:algo'>
+                <Header 
+                  changeArray={this.changeArray} 
+                  startAgain={this.startAgain} 
+                  stop={this.stop}
+                />
+                <Route 
+                  exact 
+                  path='/merge-sort' 
+                  component={() => 
+                    <MergeSortPage 
+                      array={this.state.array}
+                      key={this.state.key}
+                      show={this.state.show}
+                      setShowFalse={this.setShowFalse}
+                    />
+                  } 
+                />
+              </Route>
+          </Switch>
+          <Footer />
+          </Router>
+        </ThemeProvider>
       </div>
+      </Provider>
     );
   }
 }
