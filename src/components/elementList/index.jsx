@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import ArrayElement from '../element';
+import Element from '../element';
 
-class Array extends React.Component {
+class ElementList extends React.Component {
     constructor(props) {
         super(props);
         this.state= {
@@ -22,7 +22,7 @@ class Array extends React.Component {
         return(
             <div className='array' ref={this.divArray} >
                 {  values.map((element, i) =>     (      
-                        <ArrayElement 
+                        <Element 
                             count={count - values.length + i }
                             newCount={newCount - (values.length - i) }
                             value={element} 
@@ -35,7 +35,7 @@ class Array extends React.Component {
     };
 }
 
-Array.propTypes = {
+ElementList.propTypes = {
     values: PropTypes.oneOfType([
         PropTypes.arrayOf(PropTypes.number),
         PropTypes.oneOfType(PropTypes.string)
@@ -48,4 +48,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default  connect(mapStateToProps, null)(Array);
+export default  connect(mapStateToProps, null)(ElementList);

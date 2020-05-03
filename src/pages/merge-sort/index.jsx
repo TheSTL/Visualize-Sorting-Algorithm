@@ -2,7 +2,7 @@
 /* eslint-disable no-undef */
 import React from 'react';
 import { connect } from 'react-redux';
-import Array from '../../components/array';
+import ElementList from '../../components/elementList';
 
 let count = 0;
 
@@ -12,7 +12,7 @@ function mergeSort(unsortedArray) {
     if (unsortedArray.length <= 1) {
       return [ unsortedArray, 
         <div className='space-around' >
-          <Array 
+          <ElementList 
             values={unsortedArray} 
             count={tempCount} 
             end={true}
@@ -34,7 +34,7 @@ function mergeSort(unsortedArray) {
       sortedArray, 
       <div className='child' >
           <div className='space-around' >
-            <Array 
+            <ElementList 
               values={unsortedArray} 
               newValues={sortedArray}
               count={tempCount} 

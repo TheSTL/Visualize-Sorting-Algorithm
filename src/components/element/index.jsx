@@ -75,8 +75,9 @@ class Element extends React.Component {
     }
 
     changeElement = async () => {
+        const { newValue, value } = this.state;
         this.setState({
-            value: this.state.newValue? this.state.newValue: this.state.newValue === '0'? 0: this.state.value
+            value: newValue || newValue === 0 ? newValue: value
         });
         this.changeBorder();
     }

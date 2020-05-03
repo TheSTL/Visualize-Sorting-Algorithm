@@ -1,15 +1,23 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import {Link} from 'react-router-dom';
-function Home() {
+import { Button, Heading } from "@chakra-ui/core";
+import { Actions } from '../../action';
+
+function Home({ start }) {
+  start([]);
+
   return (
     <div className="home">
-      <h1 className="heading">
-          Visualize Sorting Algorithms..
-      </h1>
-      <ul>
+      <Heading>
+          Visualize Sorting Algorithms...
+      </Heading>
+      <ul style={{ listStyle: 'none' }}>
         <li>
-          <Link to='merge-sort'>
-            Merge sort
+          <Link to='merge-sort' style={{ textDecoration: 'none' }}>
+            <Button size="md" variantColor="cyan">
+              Merge sort
+            </Button>
           </Link>
         </li>
       </ul>
@@ -17,5 +25,11 @@ function Home() {
   );
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+   start: (array) => dispatch(Actions.start(array)),
+  }
+}
 
-export default Home;
+export default connect(null, mapDispatchToProps)(Home);
+
