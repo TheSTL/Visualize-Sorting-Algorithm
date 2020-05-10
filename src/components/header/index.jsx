@@ -134,6 +134,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
    start: (array) => dispatch(Actions.start(array)),
+   stop: Actions.stop,
    replay: () => dispatch(Actions.replay()),
    setSpeed: (speed) => dispatch(Actions.setSpeed(speed)),
    setCurrentTimeStamp: (speed) => dispatch(Actions.setCurrentTimeStamp(speed)),
