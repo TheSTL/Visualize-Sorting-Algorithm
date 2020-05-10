@@ -8,13 +8,14 @@ let count = 0;
 
 function mergeSort(unsortedArray) { 
   const tempCount = count+= unsortedArray.length;
-  
+  const countArray = unsortedArray.map((_, i) => (tempCount - unsortedArray.length + i));
+
     if (unsortedArray.length <= 1) {
       return [ unsortedArray, 
         <div className='space-around' >
           <ElementList 
             values={unsortedArray} 
-            count={tempCount} 
+            count={countArray} 
             end={true}
           />
         </div>,
@@ -29,6 +30,7 @@ function mergeSort(unsortedArray) {
     const rightResult = mergeSort(right);
 
     const sortedArray = merge(leftResult[0], rightResult[0]);
+    const newCountArray = unsortedArray.map((_, i) => (count - (unsortedArray.length - i)));
   
     return [
       sortedArray, 
@@ -37,8 +39,8 @@ function mergeSort(unsortedArray) {
             <ElementList 
               values={unsortedArray} 
               newValues={sortedArray}
-              count={tempCount} 
-              newCount={count}
+              count={countArray} 
+              newCount={newCountArray}
               end={false}
             />
           </div>
@@ -77,7 +79,7 @@ class MergeSort extends React.PureComponent {
             randomArray: props.array,
             key: props.key,
             renderMergeSort: mergeSort(props.array)[1],
-          }
+        }
     }
 
     componentDidUpdate(props) {      
@@ -104,7 +106,6 @@ class MergeSort extends React.PureComponent {
 }
 
 const mapStateToProps = state => {  
-  console.log(state);
   return {
     array: state.array,
     key: state.key,

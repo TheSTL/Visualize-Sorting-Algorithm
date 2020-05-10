@@ -13,18 +13,17 @@ class ElementList extends React.Component {
             newCount: this.props.newCount,
             end: this.props.end
         }
-        this.divArray = React.createRef();
     }
     
     render() {    
         const { values, count, newCount, newValues, end } = this.state;
 
         return(
-            <div className='array' ref={this.divArray} >
+            <div className='array'>
                 {  values.map((element, i) =>     (      
                         <Element 
-                            count={count - values.length + i }
-                            newCount={newCount - (values.length - i) }
+                            count={count && count[i]}
+                            newCount={newCount && newCount[i]}
                             value={element} 
                             newValue={newValues? newValues[i] : null} 
                             end={end}
