@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import ElementList from "../../components/elementList";
+import { Actions } from "../../action";
 
 let count = 0;
 
@@ -104,20 +105,22 @@ class QuickSort extends React.PureComponent {
         renderQuickSort: quickSort(
           this.props.array,
           0,
-          this.propsarray.length - 1
+          this.props.array.length - 1
         ),
       });
+      // key value should update after quickSort fun
+      this.props.replay();
     }
   }
 
   render() {
-    const { key } = this.props;
+    const { divKey } = this.props;
     count = 0;
     return (
       <React.Fragment>
         <h1>Quick Sort</h1>
         <div className="current" />
-        <div key={key} className="visRoot quick-sort">
+        <div key={divKey} className="visRoot quick-sort">
           {this.state.renderQuickSort}
         </div>
       </React.Fragment>
@@ -128,8 +131,14 @@ class QuickSort extends React.PureComponent {
 const mapStateToProps = (state) => {
   return {
     array: state.array,
-    key: state.key,
+    divKey: state.key,
   };
 };
 
-export default connect(mapStateToProps, null)(QuickSort);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    replay: () => dispatch(Actions.replay()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(QuickSort);
