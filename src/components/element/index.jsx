@@ -113,8 +113,6 @@ class Element extends React.Component {
                         if (history.time > currentTimeStamp) return false;
                         return true;
                     })
-        if (count === 0)
-        console.log('past', past, history);
         
         return(
             <React.Fragment>
