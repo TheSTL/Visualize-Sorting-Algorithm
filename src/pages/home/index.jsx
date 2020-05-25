@@ -1,35 +1,31 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import {Link} from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 import { Button, Heading } from "@chakra-ui/core";
-import { Actions } from '../../action';
+import Footer from "../../components/footer";
 
-function Home({ start }) {
-  start([]);
-
+function Home() {
   return (
     <div className="home">
-      <Heading>
-          Visualize Sorting Algorithms...
-      </Heading>
-      <ul style={{ listStyle: 'none' }}>
+      <Heading>Visualize Sorting Algorithms...</Heading>
+      <ul className="home-alog-list">
         <li>
-          <Link to='merge-sort' style={{ textDecoration: 'none' }}>
+          <Link to="/merge-sort">
             <Button size="md" variantColor="cyan">
               Merge sort
             </Button>
           </Link>
         </li>
+        <li>
+          <Link to="/quick-sort">
+            <Button size="md" variantColor="cyan">
+              Quick sort
+            </Button>
+          </Link>
+        </li>
       </ul>
+      <Footer />
     </div>
   );
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-   start: (array) => dispatch(Actions.start(array)),
-  }
-}
-
-export default connect(null, mapDispatchToProps)(Home);
-
+export default Home;
