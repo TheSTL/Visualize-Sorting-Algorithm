@@ -102,12 +102,13 @@ button {
   background: white;
   margin: 1px;
   text-align: center;
-  text-shadow: 1px 1px 2px black;
   box-sizing: content-box;
+  border-radius: 4px;
+  font-weight: 600;
 }
 
 .array-element.unsorted {
-  color: #f25757;
+  color: #bc0000;
   border: 2px solid #f25757;
 }
 
@@ -121,14 +122,16 @@ button {
 
 .array-element.zoom-in-with-sorted {
   border: 2px solid #85cb33;
-  color: #85cb33;
-  box-shadow: 0px 0px 5px 5px white;
-  transform: scale(1.3);
+  color: #415925;
+  box-shadow: 0px 0px 3px 3px white;
+  transform: scale(1.4);
+  z-index: 1;
 }
 
 .array-element.zoom-out {
   box-shadow: none;
   transform: scale(1);
+  z-index: 0;
 }
 
 .array {
