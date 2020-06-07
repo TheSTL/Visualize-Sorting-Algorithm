@@ -19,11 +19,27 @@ function quickSort(items, left, right) {
   const centerElement = partitionResult[1];
   let leftElement;
   let rightElement;
+
   if (left < index - 1) {
     leftElement = quickSort(items, left, index - 1);
+  } else if (left === index - 1) {
+    count++;
+    leftElement = (
+      <div className="space-around">
+        <ElementList values={[items[index - 1]]} count={[count]} end={true} />
+      </div>
+    );
   }
+
   if (index < right) {
     rightElement = quickSort(items, index, right);
+  } else if (index === right) {
+    count++;
+    rightElement = (
+      <div className="space-around">
+        <ElementList values={[items[index]]} count={[count]} end={true} />
+      </div>
+    );
   }
 
   return (
