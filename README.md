@@ -9,6 +9,6 @@ This project is created to visualize sorting algorithms like merge sort,quick so
 ### Task List
 - [X] Merge Sort
 
-- [ ] Quick Sort
+- [X] Quick Sort
 
 - [ ] Heap Sort
