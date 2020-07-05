@@ -44,7 +44,7 @@ class Header extends React.Component {
     } = this.props;
     return (
       <header className="main-header">
-        <Link to="/" style={{ textDecoration: "none" }}>
+        <Link to="/" style={{ textDecoration: "none", margin: '0' }}>
           <Icon name="arrow-back" size="32px" style={{ cursor: "pointer" }} />{" "}
           Go back
         </Link>
