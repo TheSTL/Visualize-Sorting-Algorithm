@@ -1,21 +1,7 @@
 import React from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import {
-  Button,
-  ButtonGroup,
-  Icon,
-  Badge,
-  Drawer,
-  DrawerBody,
-  Image,
-  DrawerOverlay,
-  DrawerContent,
-  DrawerCloseButton,
-} from "@chakra-ui/core";
-import { Actions } from "../../action";
-import Footer from "../footer";
+import { Link } from "react-router-dom";
+import { Button, ButtonGroup, Icon, Image } from "@chakra-ui/core";
 
 class Header extends React.Component {
   constructor(props) {
@@ -23,7 +9,6 @@ class Header extends React.Component {
     this.state = {
       maxRange: 1050,
       minRange: 0,
-      openDrawer: false,
     };
   }
   genrateArray = () => {
@@ -43,18 +28,12 @@ class Header extends React.Component {
     this.props.setCurrentTimeStamp(Number(e.target.value));
   };
 
-  toggleDrawer = () => {
-    this.setState((prevState) => ({
-      openDrawer: !prevState.openDrawer,
-    }));
-  };
-
   resetArray = () => {
     this.props.start([]);
   };
 
   render() {
-    const { maxRange, minRange, openDrawer } = this.state;
+    const { maxRange, minRange } = this.state;
     const {
       speed,
       replay,
@@ -65,55 +44,15 @@ class Header extends React.Component {
     } = this.props;
     return (
       <header className="main-header">
-        <Icon
-          name="settings"
-          size="32px"
-          style={{ cursor: "pointer" }}
-          onClick={this.toggleDrawer}
-        />
+        <Link to="/" style={{ textDecoration: "none" }}>
+          <Icon name="arrow-back" size="32px" style={{ cursor: "pointer" }} />{" "}
+          Go back
+        </Link>
         <div style={{ float: "right" }}>
           <a href="https://github.com/TheSTL/Visualize-Sorting-Algorithm">
             <Image size="32px" src="/github-icon.png" />
           </a>
         </div>
-        <Drawer
-          isOpen={openDrawer}
-          placement="left"
-          onClose={this.toggleDrawer}
-        >
-          <DrawerOverlay />
-          <DrawerContent>
-            <DrawerCloseButton style={{ backgroundColor: "black" }} />
-            <DrawerBody>
-              <div className="drawer-body">
-                <Link className="drawer-link" to="/" onClick={this.resetArray}>
-                  <Badge fontSize="1em" variantColor="purple">
-                    Home
-                  </Badge>
-                </Link>
-                <Link
-                  className="drawer-link"
-                  to="merge-sort"
-                  onClick={this.resetArray}
-                >
-                  <Badge fontSize="1em" variantColor="purple">
-                    Merge Sort
-                  </Badge>
-                </Link>
-                <Link
-                  className="drawer-link"
-                  to="quick-sort"
-                  onClick={this.resetArray}
-                >
-                  <Badge fontSize="1em" variantColor="purple">
-                    Quick Sort
-                  </Badge>
-                </Link>
-              </div>
-              <Footer />
-            </DrawerBody>
-          </DrawerContent>
-        </Drawer>
         <div className="control-btns">
           <ButtonGroup spacing={4}>
             <Button variantColor="green" size="md" onClick={this.genrateArray}>
@@ -167,26 +106,14 @@ class Header extends React.Component {
 
 Header.propTypes = {
   algorithms: PropTypes.arrayOf(PropTypes.string),
+  speed: PropTypes.number.isRequired,
+  start: PropTypes.func.isRequired,
+  replay: PropTypes.func.isRequired,
+  stop: PropTypes.func.isRequired,
+  setSpeed: PropTypes.func.isRequired,
+  endTimeStamp: PropTypes.number.isRequired,
+  startTimeStamp: PropTypes.number.isRequired,
+  currentTimeStamp: PropTypes.number.isRequired,
 };
 
-const mapStateToProps = (state) => {
-  return {
-    speed: state.speed,
-    currentTimeStamp: state.currentTimeStamp,
-    startTimeStamp: state.startTimeStamp,
-    endTimeStamp: state.endTimeStamp,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    start: (array) => dispatch(Actions.start(array)),
-    stop: Actions.stop,
-    replay: () => dispatch(Actions.replay()),
-    setSpeed: (speed) => dispatch(Actions.setSpeed(speed)),
-    setCurrentTimeStamp: (speed) =>
-      dispatch(Actions.setCurrentTimeStamp(speed)),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default Header;
