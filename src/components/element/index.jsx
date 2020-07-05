@@ -131,7 +131,16 @@ class Element extends React.Component {
 }
 
 Element.propTypes = {
-  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  count: PropTypes.number.isRequired,
+  newCount: PropTypes.number,
+  value: PropTypes.oneOfType([PropTypes.number, PropTypes.element]).isRequired,
+  newValue: PropTypes.number,
+  end: PropTypes.bool.isRequired,
+  speed: PropTypes.number.isRequired,
+  startTimeStamp: PropTypes.number.isRequired,
+  currentTimeStamp: PropTypes.number.isRequired,
+  setEndTimeStamp: PropTypes.func.isRequired,
+  setStartTimeStamp: PropTypes.func.isRequired,
 };
 
 export default Element;

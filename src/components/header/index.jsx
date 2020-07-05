@@ -1,6 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import { Button, ButtonGroup, Icon, Image } from "@chakra-ui/core";
 
 class Header extends React.Component {
@@ -44,8 +44,9 @@ class Header extends React.Component {
     } = this.props;
     return (
       <header className="main-header">
-        <Link to="/" style={{ textDecoration: 'none' }}>
-          <Icon name="arrow-back" size="32px" style={{ cursor: "pointer" }} /> Go back
+        <Link to="/" style={{ textDecoration: "none" }}>
+          <Icon name="arrow-back" size="32px" style={{ cursor: "pointer" }} />{" "}
+          Go back
         </Link>
         <div style={{ float: "right" }}>
           <a href="https://github.com/TheSTL/Visualize-Sorting-Algorithm">
@@ -105,6 +106,14 @@ class Header extends React.Component {
 
 Header.propTypes = {
   algorithms: PropTypes.arrayOf(PropTypes.string),
+  speed: PropTypes.number.isRequired,
+  start: PropTypes.func.isRequired,
+  replay: PropTypes.func.isRequired,
+  stop: PropTypes.func.isRequired,
+  setSpeed: PropTypes.func.isRequired,
+  endTimeStamp: PropTypes.number.isRequired,
+  startTimeStamp: PropTypes.number.isRequired,
+  currentTimeStamp: PropTypes.number.isRequired,
 };
 
 export default Header;

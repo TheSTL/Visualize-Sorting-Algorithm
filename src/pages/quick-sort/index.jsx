@@ -1,4 +1,5 @@
 import React, { useMemo } from "react";
+import PropTypes from "prop-types";
 import ElementList from "../../components/elementList";
 import AlogithmHoc from "../../HOC/Algorithm";
 
@@ -142,5 +143,15 @@ function QuickSort({
     </React.Fragment>
   );
 }
+
+QuickSort.propTypes = {
+  array: PropTypes.arrayOf(PropTypes.number).isRequired,
+  divKey: PropTypes.number.isRequired,
+  setEndTimeStamp: PropTypes.func.isRequired,
+  setStartTimeStamp: PropTypes.func.isRequired,
+  speed: PropTypes.number.isRequired,
+  startTimeStamp: PropTypes.number.isRequired,
+  currentTimeStamp: PropTypes.number.isRequired,
+};
 
 export default AlogithmHoc(QuickSort);

@@ -48,10 +48,14 @@ class ElementList extends React.Component {
 }
 
 ElementList.propTypes = {
-  values: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.number),
-    PropTypes.oneOfType(PropTypes.string),
-  ]),
+  values: PropTypes.arrayOf(
+    PropTypes.oneOfType([PropTypes.number, PropTypes.element])
+  ).isRequired,
+  speed: PropTypes.number.isRequired,
+  startTimeStamp: PropTypes.number.isRequired,
+  currentTimeStamp: PropTypes.number.isRequired,
+  setEndTimeStamp: PropTypes.func.isRequired,
+  setStartTimeStamp: PropTypes.func.isRequired,
 };
 
 export default ElementList;
