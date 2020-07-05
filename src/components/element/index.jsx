@@ -105,9 +105,9 @@ class Element extends React.Component {
 
   render() {
     const { value, count, history } = this.state;
-    const { currentTimeStamp, startTimeStamp } = this.props;
-    // currently it's a hack to render history of box when changing input range
-    if (currentTimeStamp === startTimeStamp) {
+    const { currentTimeStamp } = this.props;
+    // currentTimseStamp zero means control range slider is not moved
+    if (!currentTimeStamp) {
       return (
         <Box
           className={`array-element unsorted hide element-no-${count}`}
@@ -137,7 +137,6 @@ Element.propTypes = {
   newValue: PropTypes.number,
   end: PropTypes.bool.isRequired,
   speed: PropTypes.number.isRequired,
-  startTimeStamp: PropTypes.number.isRequired,
   currentTimeStamp: PropTypes.number.isRequired,
   setEndTimeStamp: PropTypes.func.isRequired,
   setStartTimeStamp: PropTypes.func.isRequired,

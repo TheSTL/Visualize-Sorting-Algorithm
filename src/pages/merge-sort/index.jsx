@@ -7,7 +7,6 @@ let count = 0;
 
 function MergeSort({
   speed,
-  startTimeStamp,
   currentTimeStamp,
   setEndTimeStamp,
   setStartTimeStamp,
@@ -51,7 +50,6 @@ function MergeSort({
               count={countArray}
               end={true}
               speed={speed}
-              startTimeStamp={startTimeStamp}
               currentTimeStamp={currentTimeStamp}
               setEndTimeStamp={setEndTimeStamp}
               setStartTimeStamp={setStartTimeStamp}
@@ -83,7 +81,6 @@ function MergeSort({
               newCount={newCountArray}
               end={false}
               speed={speed}
-              startTimeStamp={startTimeStamp}
               currentTimeStamp={currentTimeStamp}
               setEndTimeStamp={setEndTimeStamp}
               setStartTimeStamp={setStartTimeStamp}
@@ -100,8 +97,7 @@ function MergeSort({
       ];
     };
     return mergeSort(array)[1];
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [array, divKey, currentTimeStamp]);
+  }, [array, speed, currentTimeStamp, setEndTimeStamp, setStartTimeStamp]);
 
   return (
     <React.Fragment>
@@ -120,7 +116,6 @@ MergeSort.propTypes = {
   setEndTimeStamp: PropTypes.func.isRequired,
   setStartTimeStamp: PropTypes.func.isRequired,
   speed: PropTypes.number.isRequired,
-  startTimeStamp: PropTypes.number.isRequired,
   currentTimeStamp: PropTypes.number.isRequired,
 };
 

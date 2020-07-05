@@ -18,7 +18,6 @@ class ElementList extends React.Component {
     const { values, count, newCount, newValues, end } = this.state;
     const {
       currentTimeStamp,
-      startTimeStamp,
       speed,
       setEndTimeStamp,
       setStartTimeStamp,
@@ -34,7 +33,6 @@ class ElementList extends React.Component {
             newValue: newValues ? newValues[i] : null,
             end: end,
             speed,
-            startTimeStamp,
             currentTimeStamp,
             setEndTimeStamp,
             setStartTimeStamp,
@@ -52,7 +50,6 @@ ElementList.propTypes = {
     PropTypes.oneOfType([PropTypes.number, PropTypes.element])
   ).isRequired,
   speed: PropTypes.number.isRequired,
-  startTimeStamp: PropTypes.number.isRequired,
   currentTimeStamp: PropTypes.number.isRequired,
   setEndTimeStamp: PropTypes.func.isRequired,
   setStartTimeStamp: PropTypes.func.isRequired,

@@ -103,7 +103,6 @@ const Algorithm = (Wrapper) => {
         divKey,
         replay,
         speed,
-        startTimeStamp,
         currentTimeStamp,
         setEndTimeStamp,
         setStartTimeStamp,
