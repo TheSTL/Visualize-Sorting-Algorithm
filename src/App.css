@@ -196,7 +196,7 @@ label {
 .footer {
   position: absolute;
   bottom: 0;
-  left: 8px;
+  left: 1.5em;
 }
 
 .footer h5 {
@@ -226,6 +226,7 @@ label {
   color: red;
   font-weight: bolder;
 }
+
 
 input[type="range"] {
   -webkit-appearance: none;

@@ -1,120 +1,115 @@
-/* eslint-disable react/no-danger-with-children */
-/* eslint-disable no-undef */
-import React from "react";
-import { connect } from "react-redux";
+import React, { useMemo } from "react";
 import ElementList from "../../components/elementList";
+import AlogithmHoc from "../../HOC/Algorithm";
 
 let count = 0;
 
-function mergeSort(unsortedArray) {
-  const tempCount = (count += unsortedArray.length);
-  const countArray = unsortedArray.map(
-    (_, i) => tempCount - unsortedArray.length + i
-  );
-
-  if (unsortedArray.length <= 1) {
-    return [
-      unsortedArray,
-      <div className="space-around">
-        <ElementList values={unsortedArray} count={countArray} end={true} />
-      </div>,
-    ];
-  }
-
-  const middle = Math.ceil(unsortedArray.length / 2);
-  const left = unsortedArray.slice(0, middle);
-  const right = unsortedArray.slice(middle);
-
-  const leftResult = mergeSort(left);
-  const rightResult = mergeSort(right);
-
-  const sortedArray = merge(leftResult[0], rightResult[0]);
-  const newCountArray = unsortedArray.map(
-    (_, i) => count - (unsortedArray.length - i)
-  );
-
-  return [
-    sortedArray,
-    <div className="child">
-      <div className="space-around">
-        <ElementList
-          values={unsortedArray}
-          newValues={sortedArray}
-          count={countArray}
-          newCount={newCountArray}
-          end={false}
-        />
-      </div>
-      <div
-        className="space-around"
-        style={{ width: `${22 * 3 * unsortedArray.length}px` }}
-      >
-        {leftResult[1]}
-        {rightResult[1]}
-      </div>
-    </div>,
-  ];
-}
-
-function merge(left, right) {
-  let resultArray = [],
-    leftIndex = 0,
-    rightIndex = 0;
-
-  while (leftIndex < left.length && rightIndex < right.length) {
-    if (left[leftIndex] < right[rightIndex]) {
-      resultArray.push(left[leftIndex]);
-      leftIndex++;
-    } else {
-      resultArray.push(right[rightIndex]);
-      rightIndex++;
-    }
-  }
-  count += left.length + right.length;
-
-  return resultArray
-    .concat(left.slice(leftIndex))
-    .concat(right.slice(rightIndex));
-}
-
-class MergeSort extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      randomArray: props.array,
-      key: props.key,
-      renderMergeSort: mergeSort(props.array)[1],
-    };
-  }
-
-  componentDidUpdate(props) {
-    if (props.array !== this.props.array) {
-      this.setState({
-        renderMergeSort: mergeSort(this.props.array)[1],
-      });
-    }
-  }
-
-  render() {
-    const { key } = this.props;
+function MergeSort({
+  speed,
+  startTimeStamp,
+  currentTimeStamp,
+  setEndTimeStamp,
+  setStartTimeStamp,
+  divKey,
+  array,
+}) {
+  const renderMergeSort = useMemo(() => {
     count = 0;
-    return (
-      <React.Fragment>
-        <h1>Merge Sort</h1>
-        <div className="current" />
-        <div key={key} className="visRoot merge-sort">
-          {this.state.renderMergeSort}
-        </div>
-      </React.Fragment>
-    );
-  }
+    const merge = (left, right) => {
+      let resultArray = [],
+        leftIndex = 0,
+        rightIndex = 0;
+
+      while (leftIndex < left.length && rightIndex < right.length) {
+        if (left[leftIndex] < right[rightIndex]) {
+          resultArray.push(left[leftIndex]);
+          leftIndex++;
+        } else {
+          resultArray.push(right[rightIndex]);
+          rightIndex++;
+        }
+      }
+      count += left.length + right.length;
+
+      return resultArray
+        .concat(left.slice(leftIndex))
+        .concat(right.slice(rightIndex));
+    };
+    const mergeSort = (unsortedArray) => {
+      const tempCount = (count += unsortedArray.length);
+      const countArray = unsortedArray.map(
+        (_, i) => tempCount - unsortedArray.length + i
+      );
+
+      if (unsortedArray.length <= 1) {
+        return [
+          unsortedArray,
+          <div className="space-around">
+            <ElementList
+              values={unsortedArray}
+              count={countArray}
+              end={true}
+              speed={speed}
+              startTimeStamp={startTimeStamp}
+              currentTimeStamp={currentTimeStamp}
+              setEndTimeStamp={setEndTimeStamp}
+              setStartTimeStamp={setStartTimeStamp}
+            />
+          </div>,
+        ];
+      }
+
+      const middle = Math.ceil(unsortedArray.length / 2);
+      const left = unsortedArray.slice(0, middle);
+      const right = unsortedArray.slice(middle);
+
+      const leftResult = mergeSort(left);
+      const rightResult = mergeSort(right);
+
+      const sortedArray = merge(leftResult[0], rightResult[0]);
+      const newCountArray = unsortedArray.map(
+        (_, i) => count - (unsortedArray.length - i)
+      );
+
+      return [
+        sortedArray,
+        <div className="child">
+          <div className="space-around">
+            <ElementList
+              values={unsortedArray}
+              newValues={sortedArray}
+              count={countArray}
+              newCount={newCountArray}
+              end={false}
+              speed={speed}
+              startTimeStamp={startTimeStamp}
+              currentTimeStamp={currentTimeStamp}
+              setEndTimeStamp={setEndTimeStamp}
+              setStartTimeStamp={setStartTimeStamp}
+            />
+          </div>
+          <div
+            className="space-around"
+            style={{ width: `${22 * 3 * unsortedArray.length}px` }}
+          >
+            {leftResult[1]}
+            {rightResult[1]}
+          </div>
+        </div>,
+      ];
+    };
+    return mergeSort(array)[1];
+  }, [array, divKey, currentTimeStamp]);
+
+  return (
+    <React.Fragment>
+      <h1>Merge Sort</h1>
+      <div className="current" />
+      <div key={divKey} className="visRoot merge-sort">
+        {renderMergeSort}
+      </div>
+    </React.Fragment>
+  );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    array: state.array,
-    key: state.key,
-  };
-};
-
-export default connect(mapStateToProps, null)(MergeSort);
+export default AlogithmHoc(MergeSort);
