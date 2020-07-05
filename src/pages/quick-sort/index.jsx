@@ -3,8 +3,6 @@ import PropTypes from "prop-types";
 import ElementList from "../../components/elementList";
 import AlogithmHoc from "../../HOC/Algorithm";
 
-let count = 0;
-
 function QuickSort({
   speed,
   currentTimeStamp,
@@ -14,7 +12,7 @@ function QuickSort({
   array,
 }) {
   const renderQuickSort = useMemo(() => {
-    count = 0;
+    let count = 0;
     const quickSort = (items, left, right) => {
       const partitionResult = partition(items, left, right);
       const index = partitionResult[0];

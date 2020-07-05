@@ -3,8 +3,6 @@ import PropTypes from "prop-types";
 import ElementList from "../../components/elementList";
 import AlogithmHoc from "../../HOC/Algorithm";
 
-let count = 0;
-
 function MergeSort({
   speed,
   currentTimeStamp,
@@ -14,7 +12,7 @@ function MergeSort({
   array,
 }) {
   const renderMergeSort = useMemo(() => {
-    count = 0;
+    let count = 0;
     const merge = (left, right) => {
       let resultArray = [],
         leftIndex = 0,
