@@ -100,6 +100,7 @@ function MergeSort({
       ];
     };
     return mergeSort(array)[1];
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [array, divKey, currentTimeStamp]);
 
   return (
