@@ -1,0 +1,41 @@
+.array-element {
+    position: relative;
+    height: 22px;
+    width: 22px;
+    font-size: 18px;
+    padding: 2px;
+    background: white;
+    margin: 1px;
+    text-align: center;
+    box-sizing: content-box;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+  
+  .array-element.unsorted {
+    color: #bc0000;
+    border: 2px solid #f25757;
+  }
+  
+  .array-element.hide {
+    opacity: 0;
+  }
+  
+  .array-element.show {
+    opacity: 1;
+  }
+  
+  .array-element.zoom-in-with-sorted {
+    border: 2px solid #85cb33;
+    color: #415925;
+    box-shadow: 0px 0px 3px 3px white;
+    transform: scale(1.4);
+    z-index: 1;
+  }
+  
+  .array-element.zoom-out {
+    box-shadow: none;
+    transform: scale(1);
+    z-index: 0;
+  }
+  
