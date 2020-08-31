@@ -2,6 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Box } from "@chakra-ui/core";
 
+import "./index.css";
+
 class Element extends React.Component {
   constructor(props) {
     super(props);
@@ -80,7 +82,10 @@ class Element extends React.Component {
   };
 
   changeElement = async () => {
-    const { newValue, value } = this.state;
+    const { newValue, value, count, newCount } = this.state;
+
+    if (count > newCount) return;
+
     this.setState({
       value: newValue || newValue === 0 ? newValue : value,
     });
